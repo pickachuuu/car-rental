@@ -22,7 +22,7 @@ const login = () => {
                                 <input type="password" className="form-control" id="inputPassword" placeholder="Password"/>
                             </div>
                         </div>
-                        <div className='col-6 mx-auto mt-5'>
+                        <div className='col-2 mx-auto mt-5'>
                             <button type="button" className="btn btn-light">Submit</button>
                         </div>
                         <div className='col-12 text-center my-4'>
