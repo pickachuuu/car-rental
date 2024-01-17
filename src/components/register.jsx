@@ -5,7 +5,14 @@ const register = () => {
     <div className="container-fluid">
         <div className='row'>
             <div className='col-6 bg-custom mx-auto my-custom'>
-                <h1 className='lead p-2 text-light text-center'>Create your account</h1>
+                <div className="container-lg bg-custom">
+                  <h1 className='lead text-light text-center'>Create your account</h1>
+                </div>
+                <div className='container-lg bg-light'>
+                  <form>
+                    <input />
+                  </form>
+                </div>
             </div>
         </div>
     </div>

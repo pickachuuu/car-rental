@@ -6,6 +6,37 @@ body{
   background-color: rgb(252, 133, 133);
 }
 
+.bg-banner {
+  background-image: url("assets/car.jpg");
+  height: 100vh;
+  background-size: cover;
+  background-position: center; /* Center the background image */
+}
+
 .my-custom{
   margin-top: 25%;
+}
+
+.body {
+  background-color: antiquewhite;
+}
+
+.bg-banner {
+  background-image: url("assets/car.jpg");
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.my-custom {
+  margin-top: 25%;
+}
+
+/* Adjust styles for smaller screens (mobile) */
+@media (max-width: 767px) {
+  .bg-banner {
+    height: 50vh; /* Adjust the height for smaller screens */
+    background-size: cover;
+    background-position: top; /* Align the background image to the top */
+  }
 }
