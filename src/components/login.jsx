@@ -1,21 +1,23 @@
 import React from 'react'
+import Logo from '../assets/Logo.png'
 
 const login = () => {
   return (
     <div className='container-fluid'>
         <div className='row'>
-            <div className="col-lg-5 bg-banner">
-            </div>
-            <div className='col-7 col-12-sm'>
-                <div className='container-fluid'>
-                    <div className="col-7 my-custom mx-auto">
+            <div className='col-12 col-lg-7'>
+                <div className='col-12 mb-5'>
+                    <img src={Logo} className='img' alt='Logo'/>
+                </div>
+                <div className='container-fluid my-custom'>
+                    <div className="col-lg-7 p-4 mx-auto shadow rounded">
                         <div>
                             <a className='lead'>welcome back</a>
                         </div>
                         <div>
-                            <h1 className='display-4 d-none d-md-block'>Login to your account</h1>
+                            <h1 className='d-none d-md-block'>Login to your account</h1>
                         </div>
-                        <div className='mt-5'>
+                        <div className='mt-4'>
                             <form>
                                 <div className='mb-3'>
                                     <label className='form-label'>Email</label>
@@ -24,14 +26,25 @@ const login = () => {
                                 <div className='mb-3'>
                                     <label className='form-label'>password</label>
                                     <input type='password' className='form-control id="password'></input>
+                                    <div className='mt-2'>
+                                        <a className='text-custom' href='#'>forgot your password?</a>
+                                    </div>
                                 </div>
-                                <button className='btn-primary btn-lg mt-4'>
-                                    Login
-                                </button>
+                                <div>
+                                    <button className='btn btn-dark btn-lg my-4 btn-block rounded-pill'>
+                                        Login
+                                    </button>
+                                </div>
+                                <hr></hr>
+                                <div className='text-center'>
+                                    <a>Dont have an account? <a className='text-custom' href=''>Get Started</a></a>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="col-lg-5 bg-banner">
             </div>
         </div>
     </div>

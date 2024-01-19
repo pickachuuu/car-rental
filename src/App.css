@@ -14,11 +14,19 @@ body{
 }
 
 .my-custom{
-  margin-top: 25%;
+  margin-top: 10%;
 }
 
 .body {
   background-color: antiquewhite;
+}
+
+.btn-primary{
+  background-color: #c81717;
+}
+
+.text-custom{
+  color: #c81717;
 }
 
 .bg-banner {
@@ -29,7 +37,11 @@ body{
 }
 
 .my-custom {
-  margin-top: 25%;
+  margin-top: 10%;
+}
+
+.img{
+  width: 160px;
 }
 
 /* Adjust styles for smaller screens (mobile) */
