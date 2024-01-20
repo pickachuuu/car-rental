@@ -56,7 +56,8 @@ const Register = () => {
               </div>
               <hr></hr>
               <div className='text-center'>
-                <a>Already have an account? <a className='text-custom' href=''>Login</a></a>
+                <a>Already have an account?</a> 
+                <a className='text-custom' href=''>Login</a>
               </div>
             </form>
           </div>
