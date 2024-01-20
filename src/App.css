@@ -1,5 +1,5 @@
 body{
-  background-color: antiquewhite;
+  background-color: rgb(255, 255, 255);
 }
 
 .bg-custom{
@@ -29,11 +29,19 @@ body{
   color: #c81717;
 }
 
+.text-custom:hover{
+  color: #8b0606;
+}
+
 .bg-banner {
   background-image: url("assets/car.jpg");
   height: 100vh;
   background-size: cover;
   background-position: center;
+}
+
+.custom-form{
+  height: 400px;
 }
 
 .my-custom {

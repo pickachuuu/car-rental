@@ -1,15 +1,13 @@
 import React from 'react'
 import Logo from '../assets/Logo.png'
 
-const login = () => {
+const login = ({toggleComponent}) => {
   return (
-    <div className='container-fluid'>
-        <div className='row'>
-            <div className='col-12 col-lg-7'>
+    <div>
                 <div className='col-12 mb-5'>
                     <img src={Logo} className='img' alt='Logo'/>
                 </div>
-                <div className='container-fluid my-custom'>
+                <div className='container-fluid my-custom mb-5'>
                     <div className="col-lg-7 p-4 mx-auto shadow rounded">
                         <div>
                             <a className='lead'>welcome back</a>
@@ -37,17 +35,13 @@ const login = () => {
                                 </div>
                                 <hr></hr>
                                 <div className='text-center'>
-                                    <a>Dont have an account? <a className='text-custom' href=''>Get Started</a></a>
+                                    <a>Dont have an account? <a className='text-custom' href='#' onClick={toggleComponent}>Get Started</a></a>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="col-lg-5 bg-banner">
-            </div>
-        </div>
-    </div>
   )
 }
 
