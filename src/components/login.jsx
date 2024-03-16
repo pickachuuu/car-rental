@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-
-import Logo from '../assets/Logo.png';
+import React, { useState } from 'react'
+import axios from 'axios'
+import Logo from '../assets/Logo.png'
 
 const Login = ({ toggleComponent }) => {
 
-    const [cred, setCred] = useState({ username: '', password: ''});
+    const [cred, setCred] = useState({ username: '', password: ''})
 
 
     const handleInput = (event) =>{
-        const { name, value } = event.target; // takes the name and value from the input field
-        setCred((recentCred) => ({ // sets the credential by making a copy of the state and updating it //
+        const { name, value } = event.target
+        setCred((recentCred) => ({ 
             ...recentCred, [name]: value,
         }))
     };
@@ -25,18 +24,16 @@ const Login = ({ toggleComponent }) => {
             {
               console.log("Login failed")
             }else{
-              console.log("Internal server Error!");
+              console.log("Internal server Error!")
             }
         }catch(error){
-            console.log("Error", error);
+            console.log("Error", error)
         }
     }
 
   return (
     <div>
-      <div className='col-12 mb-5'>
-        <img src={Logo} className='img' alt='Logo' />
-      </div>
+
       <div className='container-fluid my-custom mb-5'>
         <div className="col-lg-7 p-4 mx-auto shadow rounded">
           <div>
@@ -65,7 +62,7 @@ const Login = ({ toggleComponent }) => {
               </div>
               <hr />
               <div className='text-center'>
-                <a>Dont have an account?</a>
+                <a>Dont have an account? </a>
                 <a className='text-custom' href='#' onClick={toggleComponent}>Get Started</a>
               </div>
             </form>
