@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import Logo from '../assets/Logo.png'
 
 const Login = ({ toggleComponent }) => {
 
