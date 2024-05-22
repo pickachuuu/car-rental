@@ -1,38 +1,13 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+
 
 const Login = ({ toggleComponent }) => {
 
     const [cred, setCred] = useState({ username: '', password: ''})
 
 
-    const handleInput = (event) =>{
-        const { name, value } = event.target
-        setCred((recentCred) => ({ 
-            ...recentCred, [name]: value,
-        }))
-    };
-
-    const handleSubmit = async (event) =>{
-        event.preventDefault();
-        const response  = await axios.post('http://localhost:5000/api/login', cred);
-        try {
-            if (response.status === 200){
-                console.log("Login sucessfully")
-            }else if (response === 401)
-            {
-              console.log("Login failed")
-            }else{
-              console.log("Internal server Error!")
-            }
-        }catch(error){
-            console.log("Error", error)
-        }
-    }
-
   return (
     <div>
-
       <div className='container-fluid my-custom mb-5'>
         <div className="col-lg-7 p-4 mx-auto shadow rounded">
           <div>
@@ -73,30 +48,3 @@ const Login = ({ toggleComponent }) => {
 };
 
 export default Login;
-
-
-//   const handleInput = (event) => {
-//     const { name, value } = event.target;
-//     setCred((prevCredentials) => ({
-//       ...prevCredentials,
-//       [name]: value,
-//     }));
-//   };
-
-
-//   const handleSubmit = async (event) =>{
-//     event.preventDefault();
-
-//     try{
-//         const response = await axios.post('http://localhost:5000/api/login', cred);
-//         if (response.status === 200) {
-//             console.log('Login successful');
-//             // You can perform actions like redirecting to another page or updating state here
-//         } else {
-//             console.log('Login failed');
-//         }
-//     } catch (error)
-//     {
-//         console.error('Login failed:', error);
-//     }
-//   };
