@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
 import axios from 'axios'
-import Logo from '../assets/Logo.png';
 
 const Register = () => {
-  const [regCred, setRegCred] = useState({fname: '', lname: '', email: '', birthdate: '', password: ''});
+  const [regCred, setRegCred] = useState({email: '', password: '', firstName: '', lastName: '', birthDate: ''});
 
   const handleformChanges = (event) => {
-    const {name, value} = event.target
-    setRegCred((recentRegCred) =>({
-      ...recentRegCred, [name]: value,
-    }))
+    const name = event.target.name
+    const value = event.target.value
+    setRegCred((prevCred) => {
+      return {...prevCred, [name]: value}
+    })
   }
 
-  const handleCreate = async (event) =>{
-    event.preventDefault()
-    const response = await axios.post('http://localhost:5000/api/register', regCred);
-    console.log(response.message)
-    if (response.status === 404){
-      console.log("Sucess!");
-    }else
-    {
-      console.error("Oh no!!");
-    }
+
+  const handleSubmit = async (event) => {
+    console.log(regCred)
+    // event.preventDefault()
+    axios.post(`http://localhost:5000/api/register`, regCred)
   }
+
+
 
   return (
     <div>
@@ -40,13 +37,13 @@ const Register = () => {
                 <div className='col-6'>
                   <div className='mb-2'>
                     <label className='form-label'>firstname</label>
-                    <input type="text" className='form-control' name='fname' onChange={handleformChanges}/>
+                    <input type="text" className='form-control' name='firstName' onChange={handleformChanges}/>
                   </div>
                 </div>
                 <div className='col-6'>
                   <div className='mb-2'>
                     <label className='form-label'>lastname</label>
-                    <input type='text' className='form-control' name='lname' onChange={handleformChanges}/>
+                    <input type='text' className='form-control' name='lastName' onChange={handleformChanges}/>
                   </div>
                 </div>
               </div>
@@ -60,7 +57,7 @@ const Register = () => {
                 <div className='col-6'>
                   <div className='mb-2'>
                     <label className='form-label'>birthdate</label>
-                    <input type='date' className='form-control' name='birthdate' onChange={handleformChanges}/>
+                    <input type='date' className='form-control' name='birthDate' onChange={handleformChanges}/>
                   </div>
                 </div>
               </div>
@@ -69,7 +66,7 @@ const Register = () => {
                 <input type='password' className='form-control' name='password' onChange={handleformChanges}/>
               </div>
               <div>
-                <button className='btn btn-dark btn-lg my-4 btn-block rounded-pill' onClick={handleCreate}>
+                <button className='btn btn-dark btn-lg my-4 btn-block rounded-pill' onClick={handleSubmit}>
                   Create Account
                 </button>
               </div>
