@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
 const Register = () => {
-  const [regCred, setRegCred] = useState({email: '', password: '', firstName: '', lastName: '', birthDate: ''});
+  const [regCred, setRegCred] = useState({email: '', password: '', firstName: '', lastName: '', birthDate: '', cPassword: ''});
 
   const handleformChanges = (event) => {
     const name = event.target.name
@@ -12,14 +13,15 @@ const Register = () => {
     })
   }
 
-
   const handleSubmit = async (event) => {
-    console.log(regCred)
-    // event.preventDefault()
-    axios.post(`http://localhost:5000/api/register`, regCred)
+    event.preventDefault()
+    if (regCred.password === regCred.cPassword != 0){
+      axios.post(`http://localhost:5000/api/register`, regCred)
+      useNavigate('/landingPage')
+    }else{
+      console.log("Password doesnt match!")
+    }
   }
-
-
 
   return (
     <div>
@@ -32,17 +34,17 @@ const Register = () => {
             <h1 className='d-none d-md-block'>Create your account</h1>
           </div>
           <div className='mt-4'>
-            <form className='custom-form'>
+            <form className='custom-form' method='POST'>
               <div className='row'>
                 <div className='col-6'>
                   <div className='mb-2'>
-                    <label className='form-label'>firstname</label>
+                    <label className='form-label'>First name</label>
                     <input type="text" className='form-control' name='firstName' onChange={handleformChanges}/>
                   </div>
                 </div>
                 <div className='col-6'>
                   <div className='mb-2'>
-                    <label className='form-label'>lastname</label>
+                    <label className='form-label'>Last name</label>
                     <input type='text' className='form-control' name='lastName' onChange={handleformChanges}/>
                   </div>
                 </div>
@@ -65,15 +67,19 @@ const Register = () => {
                 <label className='form-label'>Password</label>
                 <input type='password' className='form-control' name='password' onChange={handleformChanges}/>
               </div>
+              <div className='mb-2'>
+                <label className='form-label'>Confirm Password</label>
+                <input type='password' className='form-control' name='cPassword' onChange={handleformChanges}/>
+              </div>
               <div>
                 <button className='btn btn-dark btn-lg my-4 btn-block rounded-pill' onClick={handleSubmit}>
                   Create Account
                 </button>
-              </div>
-              <hr></hr>
+                <hr></hr>
               <div className='text-center'>
                 <a>Already have an account? </a> 
                 <a className='text-custom' href=''>Login</a>
+              </div>
               </div>
             </form>
           </div>
