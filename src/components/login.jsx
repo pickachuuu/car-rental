@@ -15,26 +15,7 @@ const Login = ({ toggleComponent }) => {
       })
   }
 
-  const handleLogin = (event) => {
-    axios.post(`http://localhost:5000/api/login`)
-  }
-
-
-  // useEffect(() => {
-  //   const fetchUsers = async () => {
-  //     try {
-  //       const { data } = await axios.get(`http://localhost:5000/api/users`);
-  //       setData(data);
-  //       console.log('data after set:', data);
-  //     } catch (error) {
-  //       console.error('Error fetching users:', error);
-  //       // Consider displaying a user-friendly error message here
-  //     }
-  //   };
-  
-  //   fetchUsers();
-  // }, []);
-
+ 
   
 
   return (
