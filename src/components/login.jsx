@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import Error from './errorPopUp.jsx'
 import axios from 'axios'
 
 const Login = ({ toggleComponent }) => {
 
   const [cred, setCred] = useState({ username: '', password: ''})
-  const [data, setData] = useState([])
 
   const hadleChanges = (event) => {
     const name = event.target.name
@@ -15,9 +15,26 @@ const Login = ({ toggleComponent }) => {
       })
   }
 
- 
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    console.log(cred);
+    try {
+      const response = await axios.post(`http://localhost:5000/api/login`, cred);
+      // Assuming successful login redirects or returns a success message
+      console.log(response.data);
+      console.log(cred)
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        console.error("User not found");
+        // Display error message or handle the case where the user is not found
+      } else {
+        console.error(error.message);
+        // Handle other errors
+      }
+    }
+  };
   
-
+  
   return (
     <div>
       <div className='container-fluid my-custom mb-5'>
