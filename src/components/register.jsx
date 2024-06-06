@@ -24,8 +24,8 @@ const Register = () => {
 
   return (
     <div>
-      <div className='container-fluid'>
-        <div className="col-lg-11 my-custom  mx-auto shadow rounded">
+      <div className='container-fluid my-custom mb-5'>
+        <div className="col-lg-7 p-4  mx-auto shadow rounded">
           <div>
             <a className='lead'>Get Started</a>
           </div>
@@ -33,7 +33,7 @@ const Register = () => {
             <h1 className='d-none d-md-block'>Create your account</h1>
           </div>
           <div className='mt-4'>
-            <form className='custom-form' method='POST'>
+            <form method='POST'>
               <div className='row'>
                 <div className='col-6'>
                   <div className='mb-2'>
@@ -71,14 +71,14 @@ const Register = () => {
                 <input type='password' className='form-control' name='cPassword' onChange={handleformChanges}/>
               </div>
               <div>
-                <button className='btn btn-dark btn-lg my-4 btn-block rounded-pill' onClick={handleSubmit}>
+                <button className='btn btn-dark btn-lg my-2 btn-block rounded-pill' onClick={handleSubmit}>
                   Create Account
                 </button>
                 <hr></hr>
-              <div className='text-center'>
-                <a>Already have an account? </a> 
-                <a className='text-custom' href=''>Login</a>
-              </div>
+                <div className='text-center'>
+                  <a>Already have an account? </a> 
+                  <a className='text-custom' href=''>Login</a>
+                </div>
               </div>
             </form>
           </div>

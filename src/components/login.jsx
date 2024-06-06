@@ -36,7 +36,6 @@ const Login = ({ toggleComponent }) => {
     }
   };
   
-  
   return (
     <div>
       <div className='container-fluid my-custom mb-5'>
