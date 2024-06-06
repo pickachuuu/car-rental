@@ -16,8 +16,7 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (regCred.password === regCred.cPassword != 0){
-      axios.post(`http://localhost:5000/api/register`, regCred)
-      useNavigate('/landingPage')
+      await axios.post(`http://localhost:5000/api/register`, regCred)
     }else{
       console.log("Password doesnt match!")
     }
