@@ -19,10 +19,12 @@ const Login = ({ toggleComponent }) => {
     event.preventDefault();
     console.log(cred);
     try {
-      const response = await axios.post(`http://localhost:5000/api/login`, cred);
+      const response = await axios.post(`http://localhost:5000/api/login`, {
+        email: cred.username,
+        password: cred.password
+      });
       // Assuming successful login redirects or returns a success message
       console.log(response.data);
-      console.log(cred)
     } catch (error) {
       if (error.response && error.response.status === 404) {
         console.error("User not found");
