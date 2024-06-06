@@ -9,17 +9,6 @@ import './App.css';
 function App() {
   const [RenderedPage, setRenderedPage] = useState(true)
   
-  // server //
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/data')
-      .then(response => {
-        setData(response.data.message);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
-  // server //
 
   const toggleComponent =  () => {
     setRenderedPage(!RenderedPage)
