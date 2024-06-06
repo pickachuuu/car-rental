@@ -71,7 +71,7 @@ const Register = () => {
                 <input type='password' className='form-control' name='cPassword' onChange={handleformChanges}/>
               </div>
               <div>
-                <button className='btn btn-dark btn-lg my-2 btn-block rounded-pill' onClick={handleSubmit}>
+                <button className='btn btn-dark btn-lg my-3 btn-block rounded-pill' onClick={handleSubmit}>
                   Create Account
                 </button>
                 <hr></hr>
