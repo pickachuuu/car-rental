@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios';
 import Login from '../components/login'
 import Register from '../components/register'
 import Logo from '../assets/Logo.png'
@@ -7,17 +6,6 @@ import Logo from '../assets/Logo.png'
 function App() {
   const [RenderedPage, setRenderedPage] = useState(true)
   
-  // server //
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/data')
-      .then(response => {
-        setData(response.data.message);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
-  // server //
 
   const toggleComponent =  () => {
     setRenderedPage(!RenderedPage)
@@ -36,7 +24,7 @@ function App() {
       <div className="col-lg-5 bg-banner order-1 order-lg-2">
       </div>
     </div>
-    </div>
+    </div> 
     </>
   )
 }
