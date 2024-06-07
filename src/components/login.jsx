@@ -18,8 +18,6 @@ const Login = ({ toggleComponent }) => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    // setError(null);
-
     try {
       const response = await axios.post(`http://localhost:5000/api/login`, {
         email: cred.username,
