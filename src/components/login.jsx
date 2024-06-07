@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Error from './errorPopUp.jsx'
 import axios from 'axios'
 
 const Login = ({ toggleComponent }) => {
-
+  const navigate = useNavigate();
   const [cred, setCred] = useState({ username: '', password: ''})
 
   const hadleChanges = (event) => {
@@ -17,14 +18,26 @@ const Login = ({ toggleComponent }) => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    console.log(cred);
+    // setError(null);
+
     try {
       const response = await axios.post(`http://localhost:5000/api/login`, {
         email: cred.username,
         password: cred.password
       });
       // Assuming successful login redirects or returns a success message
-      console.log(response.data);
+      if (response.status == 200){
+
+        if (response.data.role == "Admin")
+          {
+            navigate('/Dashboard')
+          }else
+          {
+            navigate('/Home')
+          }
+      }else if (response.status == 401){
+        navigate('/')
+      }
     } catch (error) {
       if (error.response && error.response.status === 404) {
         console.error("User not found");
