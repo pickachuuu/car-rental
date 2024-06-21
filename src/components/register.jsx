@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
-const Register = () => {
+const Register = ({ toggleComponent }) => {
   const [regCred, setRegCred] = useState({email: '', password: '', firstName: '', lastName: '', birthDate: '', cPassword: ''});
 
   const handleformChanges = (event) => {
@@ -16,7 +16,14 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (regCred.password === regCred.cPassword != 0){
-      await axios.post(`http://localhost:5000/api/register`, regCred)
+      try{
+        const response = await axios.post(`http://localhost:5000/api/register`, regCred)
+        if (response.status == 200){
+          
+        }
+      }catch(error){
+
+      }
     }else{
       console.log("Password doesnt match!")
     }
@@ -77,7 +84,7 @@ const Register = () => {
                 <hr></hr>
                 <div className='text-center'>
                   <a>Already have an account? </a> 
-                  <a className='text-custom' href=''>Login</a>
+                  <a className='text-custom'  onClick={toggleComponent}>Login</a>
                 </div>
               </div>
             </form>
