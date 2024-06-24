@@ -1,11 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import Error from './errorPopUp.jsx'
+import { AuthContext } from '../utils/authContext.jsx';
 import axios from 'axios'
 
 const Login = ({ toggleComponent }) => {
-  const navigate = useNavigate();
+
+    // function hasCookie(cookieName) {
+    //   const cookies = document.cookie.split(';');
+    //   for (const cookie of cookies) {
+    //     const [key, value] = cookie.trim().split('=');
+    //     if (key === cookieName && value) {
+    //       return true;
+    //     }
+    //   }
+    //   return false;
+    // }
+
+  const navigate = useNavigate()
   const [cred, setCred] = useState({ username: '', password: ''})
+  const {setIsAuthenticated, setUser} = useContext(AuthContext)
+
 
   const hadleChanges = (event) => {
     const name = event.target.name
@@ -23,23 +37,35 @@ const Login = ({ toggleComponent }) => {
         email: cred.username,
         password: cred.password
       });
+
+      console.log("hello")
+      
+
       // Assuming successful login redirects or returns a success message
       if (response.status == 200){
+
+
+        const token = response.token
+        const someDaysFromNow = new Date(Date.now() + (7 * 24 * 60 * 60 * 1000)); // Example: 7 days from now
+        document.cookie = `authToken=${token}; expires=${someDaysFromNow.toUTCString()}; Secure;`
+        setIsAuthenticated(true);
+        setUser(response.data.user); 
+        
+        // const hasJwtCookie = hasCookie('authToken');
+        // console.log('JWT cookie found:', hasJwtCookie);
 
         if (response.data.role == "Admin")
           {
             navigate('/Dashboard')
           }else
           {
-            navigate('/Home')
+            // navigate('/Home')
           }
-      }else if (response.status == 401){
-        navigate('/')
       }
+
     } catch (error) {
-      if (error.response && error.response.status === 404) {
-        console.error("User not found");
-        // Display error message or handle the case where the user is not found
+      if (error.response && error.response.status === 401) {
+        // error //
       } else {
         console.error(error.message);
         // Handle other errors
@@ -58,20 +84,25 @@ const Login = ({ toggleComponent }) => {
             <h1 className='d-none d-md-block'>Login to your account</h1>
           </div>
           <div className='mt-4'>
-            <form method='POST'>
+            <form method='POST' className='needs-validation' noValidate>
               <div className='mb-3'>
-                <label className='form-label'>Email</label>
-                <input type="email" className='form-control' id="email" name="username" onChange={hadleChanges}/>
+                <label className='form-label' for="validationCustom01" >Email</label>
+                <input type="email" className='form-control' id="email" name="username" onChange={hadleChanges} required/>
               </div>
               <div className='mb-3'>
                 <label className='form-label'>Password</label>
-                <input type='password' className='form-control' id="password" name="password"  onChange={hadleChanges}/>
+
+                {/* <div className=''>
+                  {passwordError && <span className="error">{passwordError}</span>}
+                </div> */}
+
+                <input type='password' className='form-control' id="password" name="password"  onChange={hadleChanges} required/>
                 <div className='mt-2'>
                   <a className='text-custom' href='#'>Forgot your password?</a>
                 </div>
               </div>
               <div>
-                <button className='btn btn-dark btn-lg my-4 btn-block rounded-pill' onClick={handleLogin}>
+                <button className='btn btn-dark btn-lg my-4 btn-block rounded-pill' type='submit' onClick={handleLogin}>
                   Login
                 </button>
               </div>
