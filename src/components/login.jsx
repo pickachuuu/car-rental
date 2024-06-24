@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../utils/authContext.jsx';
+import { useForm } from 'react-hook-form';
 import axios from 'axios'
 
 const Login = ({ toggleComponent }) => {
@@ -17,52 +18,34 @@ const Login = ({ toggleComponent }) => {
     // }
 
   const navigate = useNavigate()
-  const [cred, setCred] = useState({ username: '', password: ''})
   const {setIsAuthenticated, setUser} = useContext(AuthContext)
+  const { register, handleSubmit, formState: {errors} } = useForm();
 
-
-  const hadleChanges = (event) => {
-    const name = event.target.name
-    const value = event.target.value
-    setCred((prev) => 
-      {
-        return {...prev, [name]: value}
-      })
-  }
-
-  const handleLogin = async (event) => {
-    event.preventDefault();
+  const handleLogin = async (data) => {
+    const { email, password } = data; // Destructuring to extract email and password
+    console.log(`Email: ${email}, Password: ${password}`);
     try {
       const response = await axios.post(`http://localhost:5000/api/login`, {
-        email: cred.username,
-        password: cred.password
+        email: data.email,
+        password: data.password
       });
-
-      console.log("hello")
-      
 
       // Assuming successful login redirects or returns a success message
       if (response.status == 200){
-
-
         const token = response.token
         const someDaysFromNow = new Date(Date.now() + (7 * 24 * 60 * 60 * 1000)); // Example: 7 days from now
         document.cookie = `authToken=${token}; expires=${someDaysFromNow.toUTCString()}; Secure;`
         setIsAuthenticated(true);
         setUser(response.data.user); 
-        
-        // const hasJwtCookie = hasCookie('authToken');
-        // console.log('JWT cookie found:', hasJwtCookie);
 
         if (response.data.role == "Admin")
           {
             navigate('/Dashboard')
           }else
           {
-            // navigate('/Home')
+            navigate('/Home')
           }
       }
-
     } catch (error) {
       if (error.response && error.response.status === 401) {
         // error //
@@ -84,28 +67,38 @@ const Login = ({ toggleComponent }) => {
             <h1 className='d-none d-md-block'>Login to your account</h1>
           </div>
           <div className='mt-4'>
-            <form method='POST' className='needs-validation' noValidate>
+
+            
+            <form method='POST' onSubmit={handleSubmit(handleLogin)}>
               <div className='mb-3'>
-                <label className='form-label' for="validationCustom01" >Email</label>
-                <input type="email" className='form-control' id="email" name="username" onChange={hadleChanges} required/>
+                <label className='form-label' >Email</label>
+                <input {...register("email", {
+                  required: "Email is required",
+                  validate: (value) => {
+                    if (!value.includes('@')){
+                      return false
+                    }
+                    return true
+                  }
+                })} type="email" className='form-control' id="username"/>
+                {errors.email && <div className='text-red-500'>{errors.email.message}</div>}
               </div>
               <div className='mb-3'>
                 <label className='form-label'>Password</label>
-
-                {/* <div className=''>
-                  {passwordError && <span className="error">{passwordError}</span>}
-                </div> */}
-
-                <input type='password' className='form-control' id="password" name="password"  onChange={hadleChanges} required/>
+                <input {...register("password", {
+                  required: "Password is required"
+                })} type='password' className='form-control' id="password"/>
+                {errors.password && <div className='text-red-500'>{errors.password.message}</div>}
                 <div className='mt-2'>
                   <a className='text-custom' href='#'>Forgot your password?</a>
                 </div>
               </div>
               <div>
-                <button className='btn btn-dark btn-lg my-4 btn-block rounded-pill' type='submit' onClick={handleLogin}>
+                <button className='btn btn-dark btn-lg my-4 btn-block rounded-pill' type='submit'>
                   Login
                 </button>
               </div>
+
               <hr />
               <div className='text-center'>
                 <a>Dont have an account? </a>
