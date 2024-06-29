@@ -36,7 +36,6 @@ const Login = ({ toggleComponent }) => {
         const someDaysFromNow = new Date(Date.now() + (7 * 24 * 60 * 60 * 1000)); // Example: 7 days from now
         document.cookie = `authToken=${token}; expires=${someDaysFromNow.toUTCString()}; Secure;`
         setIsAuthenticated(true);
-        setUser(response.data.user); 
 
         if (response.data.role == "Admin")
           {
