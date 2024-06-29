@@ -31,6 +31,8 @@ body{
   color: #c81717;
 }
 
+
+
 .text-custom:hover{
   color: #8b0606;
 }
@@ -51,6 +53,21 @@ body{
   width: 160px;
 }
 
+.text-red-500{
+  color: #8b0606;
+  padding: 5px
+}
+
+.text-green-500{
+  color: #00ff15;
+  padding: 5px
+}
+
+.error {
+
+  color: #8b0606;
+}
+
 /* Adjust styles for smaller screens (mobile) */
 @media (max-width: 767px) {
   .bg-banner {
@@ -59,3 +76,4 @@ body{
     background-position: top; /* Align the background image to the top */
   }
 }
+
