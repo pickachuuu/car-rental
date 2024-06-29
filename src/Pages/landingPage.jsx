@@ -22,7 +22,7 @@
               {activeComponent === 'login' ? (
                 <Login toggleComponent={handleToggle} />
               ) : (
-                <Register toggleComponent={handleToggle} />
+                <Register toggleComponent={handleToggle} setActiveComponent={setActiveComponent} />
               )}
             </div>
             <div className="col-lg-5 bg-banner order-1 order-lg-2">
