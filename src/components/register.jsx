@@ -15,12 +15,20 @@ const Register = ({ toggleComponent, setActiveComponent }) => {
     console.log(data)
       try{
         const response = await axios.post(`http://localhost:5000/api/register`, data)
-        console.log(response)
+        // console.log(response)
         if (response.status === 201){
           setActiveComponent('login')
         }
       }catch(error){
-        console.error(error)
+        if (error.response && error.response.status === 409){
+          setError("root", {
+            message: "Account with this email already exist"
+          })
+        }else{
+          setError("root", {
+            message: "Internal server error, please try again later"
+          })
+        }
       }
   }
 
@@ -110,7 +118,7 @@ const Register = ({ toggleComponent, setActiveComponent }) => {
                 <button className='btn btn-dark btn-lg my-3 btn-block rounded-pill' type='submit'>
                   Create Account
                 </button>
-                {errors.root && <div className='text-red-500'>{errors.root.message}</div>}
+                {errors.root && <div className='text-red-500 text-center'>{errors.root.message}</div>}
                 <hr/>
 
                 <div className='text-center'>

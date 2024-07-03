@@ -19,7 +19,7 @@ const Login = ({ toggleComponent }) => {
 
   const navigate = useNavigate()
   const {setIsAuthenticated, setUser} = useContext(AuthContext)
-  const { register, handleSubmit, formState: {errors} } = useForm();
+  const { register, handleSubmit, formState: {errors}, setError } = useForm();
 
   const handleLogin = async (data) => {
     const { email, password } = data; // Destructuring to extract email and password
@@ -48,9 +48,14 @@ const Login = ({ toggleComponent }) => {
     } catch (error) {
       if (error.response && error.response.status === 401) {
         // error //
+        setError("root", {
+          message: "Invalid email or password"
+        })
       } else {
-        console.error(error.message);
         // Handle other errors
+        setError("root", {
+          message: "Internal server error, please try again later"
+        })
       }
     }
   };
@@ -96,6 +101,7 @@ const Login = ({ toggleComponent }) => {
                 <button className='btn btn-dark btn-lg my-4 btn-block rounded-pill' type='submit'>
                   Login
                 </button>
+                {errors.root && <div className='text-red-500 text-center'>{errors.root.message}</div>}
               </div>
 
               <hr />
