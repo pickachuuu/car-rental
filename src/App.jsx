@@ -4,7 +4,7 @@ import Landing from './Pages/landingPage';
 import PrivateRoutes from './utils/privateRoutes';
 import AdminDashboard from './Pages/adminDashboard'
 import UserDashboard from './Pages/userDashboard'
-import { AuthTokenContext, AuthTokenProvider } from './utils/authTokenContext';
+import { AuthTokenProvider } from './utils/authTokenContext';
 
 
 // Assuming you have a separate Login component in a file named Login.jsx
