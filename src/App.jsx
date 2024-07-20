@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Landing from './Pages/landingPage';
+import AuthPage from './Pages/authPage';
 import PrivateRoutes from './utils/privateRoutes';
 import AdminDashboard from './Pages/adminDashboard'
 import UserDashboard from './Pages/userDashboard'
@@ -21,7 +21,7 @@ function App() {
             <Route element={<UserDashboard/>} path='/Home'/>
           </Route>
         {/* privateRoutes */}
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<AuthPage />} />
       </Routes>
     </Router>
     </AuthTokenProvider>
