@@ -4,6 +4,7 @@ import AuthPage from './Pages/authPage';
 import PrivateRoutes from './utils/privateRoutes';
 import AdminDashboard from './Pages/adminDashboard'
 import UserDashboard from './Pages/userDashboard'
+import LandingPage from './Pages/landingPage'
 import { AuthTokenProvider } from './utils/authTokenContext';
 
 
@@ -21,7 +22,8 @@ function App() {
             <Route element={<UserDashboard/>} path='/Home'/>
           </Route>
         {/* privateRoutes */}
-        <Route path="/" element={<AuthPage />} />
+        <Route element={<AuthPage/>} path='/Login'/>
+        <Route path="/" element={<LandingPage />} />
       </Routes>
     </Router>
     </AuthTokenProvider>
