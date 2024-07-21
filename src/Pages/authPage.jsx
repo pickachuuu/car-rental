@@ -17,7 +17,9 @@
           <div className='row'>
             <div className='col-12 col-lg-7 order-2 order-lg-1'>
               <div className='col-12 col-sm-4'>
-                <img src={Logo} className='img' alt='Logo' />
+                <a href='/'>
+                  <img src={Logo} className='img' alt='Logo' />
+                </a>
               </div>
               {activeComponent === 'login' ? (
                 <Login toggleComponent={handleToggle} />
