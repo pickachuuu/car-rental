@@ -63,7 +63,7 @@ const Login = ({ toggleComponent }) => {
   return (
     <div>
       <div className='container-fluid my-custom mb-5'>
-        <div className="col-lg-7 p-4 mx-auto shadow rounded">
+        <div className="col-lg-9 p-4 mx-auto shadow rounded">
           <div>
             <a className='lead'>welcome back</a>
           </div>
@@ -71,8 +71,6 @@ const Login = ({ toggleComponent }) => {
             <h1 className='d-none d-md-block'>Login to your account</h1>
           </div>
           <div className='mt-4'>
-
-            
             <form method='POST' onSubmit={handleSubmit(handleLogin)}>
               <div className='mb-3'>
                 <label className='form-label' >Email</label>

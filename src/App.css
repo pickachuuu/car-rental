@@ -17,11 +17,24 @@ body{
   margin-top: 10%;
 }
 
-
+.my-custom-h{
+  font-size: 64px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
+  margin-top: 15vh;
+  margin-left: 5%;
+}
 
 .body {
   background-color: antiquewhite;
 }
+
+/* .fixed-width-container {
+  min-width: 440px;
+  max-width: 100%; 
+  margin: 0 auto; 
+} */
+
 
 .btn-primary{
   background-color: #c81717;
@@ -32,16 +45,15 @@ body{
 }
 
 
-
 .text-custom:hover{
   color: #8b0606;
 }
 
 .bg-banner {
   background-image: url("assets/car.jpg");
-  height: 100vh;
   background-size: cover;
   background-position: center;
+  height: 100vh;
 }
 
 
@@ -68,12 +80,43 @@ body{
   color: #8b0606;
 }
 
-/* Adjust styles for smaller screens (mobile) */
-@media (max-width: 767px) {
+@media screen and (min-width: 200px) {
+    .bg-banner {
+      height: 35vh;
+      background-size: cover;
+      background-position: top;
+    }
+  }
+
+@media screen and (min-width: 1024px) {
   .bg-banner {
-    height: 50vh; /* Adjust the height for smaller screens */
+    height: 50vh;
     background-size: cover;
-    background-position: top; /* Align the background image to the top */
+    background-position: top;
   }
 }
 
+@media (min-width: 1024px) and (min-height: 600px ){
+  .bg-banner {
+    height: 140vh;
+    background-size: cover;
+    background-position: top;
+  }
+}
+
+@media (min-width: 1280px){
+  .bg-banner {
+    height: 110vh;
+    background-size: cover;
+    background-position: top;
+  }
+}
+
+@media (max-width: 768px) {
+  .my-custom-h {
+    font-size: 2.1rem;
+    font-weight: bold;
+    margin-top: 10%;
+    margin-left: 0%;
+  }
+}

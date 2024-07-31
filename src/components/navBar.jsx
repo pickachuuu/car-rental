@@ -1,37 +1,37 @@
 import React from 'react';
+import Logo from '../assets/Logo.png'; // Assuming your logo is an image
 
 const NavBar = () => {
   return (
-    <nav class="navbar navbar-expand-md navbar-light">
-  <div class="container">
-    <a class="navbar-brand" href="/">Car Rental</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav className="navbar navbar-expand-md navbar-light sticky-top">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="/">
+          <img src={Logo} className='img' alt="Car Rental Logo" />
+        </a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExample05">
-      <ul class="navbar-nav ml-auto"> {/* Centered Links */}
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-
-
-      </ul>
-      <ul class="navbar-nav ml-auto"> {/* Right-side Login */}
-        <li class="nav-item">
-          <a class="nav-link" href="/Login">Login</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
+        <div className="collapse navbar-collapse" id="navbarsExample05">
+          <ul className="navbar-nav ml-auto mr-5"> {/* Centered Links */}
+            <li className="nav-item">
+              <a className="nav-link active text-custom" href="#">Services</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link text-custom" href="#">Fleet</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link text-custom" href="#">Contact</a>
+            </li>
+          </ul>
+          <ul className="navbar-nav ml-auto"> {/* Right-side Login */}
+            <li className="nav-item">
+              <a className="nav-link text-custom" href="/Login">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 };
 

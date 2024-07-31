@@ -34,8 +34,8 @@ const Register = ({ toggleComponent, setActiveComponent }) => {
 
   return (
     <div>
-      <div className='container-fluid my-custom mb-5'>
-        <div className="col-lg-7 p-4  mx-auto shadow rounded">
+      <div className='container-fluid fixed-width-container my-custom mb-5'>
+        <div className="col-lg-9 p-4  mx-auto shadow rounded">
           <div>
             <a className='lead'>Get Started</a>
           </div>
